@@ -1,0 +1,99 @@
+[System]
+Name='MarriageDecisionMaker'
+Type='mamdani'
+Version=2.0
+NumInputs=5
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='PersonalCharacteristics'
+Range=[0 1]
+NumMFs=5
+MF1='Reserved':'gaussmf',[0.1 0]
+MF2='Shy':'gaussmf',[0.1 0.25]
+MF3='Talkative':'gaussmf',[0.1 0.5]
+MF4='Social':'gaussmf',[0.1 0.75]
+MF5='Outgoing':'gaussmf',[0.1 1]
+
+[Input2]
+Name='Education'
+Range=[0 1]
+NumMFs=5
+MF1='NoEducation':'trimf',[-0.2 0 0.2]
+MF2='HighschoolGrad':'trimf',[0.05 0.25 0.45]
+MF3='CollegeGrad':'trimf',[0.3 0.5 0.7]
+MF4='UniversityGrad':'trimf',[0.55 0.75 0.95]
+MF5='PostGrad':'trimf',[0.8 1 1.2]
+
+[Input3]
+Name='FinancialStanding'
+Range=[0 1]
+NumMFs=5
+MF1='Poor':'trimf',[-0.2 0 0.2]
+MF2='LowerMiddleClass':'trimf',[0.05 0.25 0.45]
+MF3='MiddleClass':'trimf',[0.3 0.5 0.7]
+MF4='UpperMiddleClass':'trimf',[0.55 0.75 0.95]
+MF5='Wealthy':'trimf',[0.8 1 1.2]
+
+[Input4]
+Name='Beauty'
+Range=[0 1]
+NumMFs=5
+MF1='Unattractive':'gaussmf',[0.12 0]
+MF2='BelowAverage':'gaussmf',[0.12 0.25]
+MF3='Fair':'gaussmf',[0.12 0.5]
+MF4='GoodLooking':'gaussmf',[0.12 0.75]
+MF5='VeryAttractive':'gaussmf',[0.12 1]
+
+[Input5]
+Name='PreviousFriendshipLevel&History'
+Range=[0 1]
+NumMFs=5
+MF1='Strangers':'gaussmf',[0.08 0]
+MF2='Acquaintance':'gaussmf',[0.08 0.5]
+MF3='Friends':'gaussmf',[0.08 0.75]
+MF4='FriendsFriend':'gaussmf',[0.08 0.25]
+MF5='BestFriends':'gaussmf',[0.08 1]
+
+[Output1]
+Name='Compatibility'
+Range=[0 1]
+NumMFs=5
+MF1='Not_Compatible':'trimf',[-0.2 0 0.2]
+MF2='Little_Compability':'trimf',[0.05 0.25 0.45]
+MF3='Mostly_Compatible':'trimf',[0.55 0.75 0.95]
+MF4='Very_Compatible':'trimf',[0.8 1 1.2]
+MF5='Somewhat_Compatible':'trimf',[0.3 0.5 0.7]
+
+[Rules]
+5 0 0 0 0, 4 (0.35) : 1
+4 0 0 0 0, 3 (0.35) : 1
+3 0 0 0 0, 5 (0.35) : 1
+2 0 0 0 0, 2 (0.35) : 1
+1 0 0 0 0, 1 (0.35) : 1
+0 5 0 0 0, 4 (0.45) : 1
+0 4 0 0 0, 3 (0.45) : 1
+0 3 0 0 0, 5 (0.45) : 1
+0 2 0 0 0, 2 (0.45) : 1
+0 1 0 0 0, 1 (0.45) : 1
+0 0 5 0 0, 4 (0.1) : 1
+0 0 4 0 0, 3 (0.1) : 1
+0 0 3 0 0, 5 (0.1) : 1
+0 0 2 0 0, 2 (0.1) : 1
+0 0 1 0 0, 1 (0.1) : 1
+0 0 0 1 0, 1 (0.05) : 1
+0 0 0 2 0, 2 (0.05) : 1
+0 0 0 3 0, 5 (0.05) : 1
+0 0 0 4 0, 3 (0.05) : 1
+0 0 0 5 0, 4 (0.05) : 1
+0 0 0 0 1, 1 (0.05) : 1
+0 0 0 0 2, 5 (0.05) : 1
+0 0 0 0 3, 3 (0.05) : 1
+0 0 0 0 4, 2 (0.05) : 1
+0 0 0 0 5, 4 (0.05) : 1
